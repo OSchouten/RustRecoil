@@ -1,0 +1,46 @@
+﻿  ColourFullBackGround.cpp
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(17,236): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(18,229): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(20,205): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(21,199): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(24,296): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(25,279): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(27,302): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(28,271): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(30,301): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(31,288): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(62,563): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(69,360): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(77,26): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(78,21): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(92,67): warning C4305: 'argument': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(93,73): warning C4305: 'argument': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(183,171): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(183,122): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(189,222): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(189,157): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(193,271): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(193,173): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(193,83): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(193,37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(197,246): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(197,160): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(197,78): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(197,37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(202,225): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(202,144): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(202,73): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(202,37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(207,204): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(207,135): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(207,73): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+C:\Users\Olivier\source\repos\MouseMove\ColourFullBackGround.cpp(207,37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  MouseMove.vcxproj -> C:\Users\Olivier\source\repos\MouseMove\Debug\ColourFullBackGround.exe
