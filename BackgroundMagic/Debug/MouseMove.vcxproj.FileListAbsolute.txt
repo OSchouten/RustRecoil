@@ -1,1 +1,2 @@
 C:\Users\Olivier\source\repos\MouseMove\Debug\ColourFullBackGround.exe
+C:\Users\Olivier\RustRecoil\BackgroundMagic\Debug\ColourFullBackGround.exe

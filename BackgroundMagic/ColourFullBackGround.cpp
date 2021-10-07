@@ -67,7 +67,11 @@ struct Weapon_FireRate {
     const float m39 = 0;
     const float python = 100;
     const float MP5A4ControlTime[30] = { 43.441909, 58.669031, 66.411108, 71.385438, 83.641583, 79.398875, 52.763157, 21.615756, 40.987258, 52.649410, 42.242421, 15.073904, 19.158961, 29.407978, 34.560589, 33.587834, 26.295315, 12.769285, 4.207833, 10.980831, 17.070518, 21.744130, 24.917849, 26.570261, 26.693439, 25.283775, 22.339392, 17.859221, 11.842602 };
-    const double AssaultRifleControlTime[30] = { 121.96149709966872, 92.6333814724611, 138.60598637206294, 113.37874368443146, 66.25151186427745, 66.29530438019354, 75.9327831420658, 85.05526144256157, 89.20256669256554, 86.68010184667988, 78.82145888317788, 70.0451048111144, 60.85979604582978, 59.51642457624619, 71.66762996283607, 86.74060009403034, 98.3363599080854, 104.34161954944257, 104.09299204005345, 97.58780746901739, 85.48062700875559, 70.4889202349561, 56.56417811530545, 47.386907899993936, 56.63787408680247, 91.5937793023631, 112.38667610336424, 111.39338971888095, 87.5067801164596 };
+    const float AssaultRifleControlTime[30] = { 121.96149709966872, 92.6333814724611, 138.60598637206294, 113.37874368443146, 66.25151186427745, 66.29530438019354, 75.9327831420658, 85.05526144256157, 89.20256669256554, 86.68010184667988, 78.82145888317788, 70.0451048111144, 60.85979604582978, 59.51642457624619, 71.66762996283607, 86.74060009403034, 98.3363599080854, 104.34161954944257, 104.09299204005345, 97.58780746901739, 85.48062700875559, 70.4889202349561, 56.56417811530545, 47.386907899993936, 56.63787408680247, 91.5937793023631, 112.38667610336424, 111.39338971888095, 87.5067801164596 };
+    const float SMGControleTime[24] = { 72.942129, 66.636213, 62.974812, 61.750535, 60.935042, 57.200952, 49.164097, 38.976078, 35.006739, 37.638419, 39.187920, 36.075356, 28.171659, 21.234233, 24.358432, 28.987042, 29.927871, 26.070199, 18.119360, 13.438176, 16.856357, 19.274035, 18.320346 };
+    const float ThompsonControlTime[20] = { 86.598887, 78.34714, 74.408310, 73.568908, 69.211680, 57.652541, 44.231602, 43.172386, 46.847870, 43.832255, 32.594771, 25.597451, 32.269315, 36.054248, 31.898137, 20.621504, 16.997289, 22.046002, 22.690070 };
+    const float M249ControlTime[100] = { 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000, 151.250000 };
+    const float LRControlTime[30] = { 50.486527, 63.409837, 69.352231, 69.019084, 60.342866, 50.279209, 40.623896, 30.626204, 31.369554, 40.533283, 43.897277, 38.230196, 23.219868, 9.947927, 14.267603, 20.268351, 25.386810, 29.051251, 31.098685, 31.469423, 30.140472, 27.108869, 22.395387, 16.088652, 8.546886, 27.487437, 61.533720, 72.697228, 60.831257 };
 };
 
 struct Modifier
@@ -190,21 +194,25 @@ int main()
             }
             if (currentwep == 3)
             {
-                linearInterpolation(randomiserSmoothing, weapon_firerate.Thompson * (1 + 0), (((weapon_recoil.thompsonX[check] * recoil) * (1 + randomiserR) *(scope * 1.2) * attachment)), (((weapon_recoil.thompsonY[check] * recoil) * (1 + randomiserR) * (scope * 1.2))) * attachment);
+                LinearlySmoothing(130, (weapon_firerate.ThompsonControlTime[check]), (weapon_recoil.thompsonX[check] * scope * (1 + randomiserR) * attachment), (weapon_recoil.thompsonY[check] * scope * attachment * (1 + randomiserR)));
+                //linearInterpolation(randomiserSmoothing, weapon_firerate.Thompson * (1 + 0), (((weapon_recoil.thompsonX[check] * recoil) * (1 + randomiserR) *(scope * 1.2) * attachment)), (((weapon_recoil.thompsonY[check] * recoil) * (1 + randomiserR) * (scope * 1.2))) * attachment);
             }
             if (currentwep == 4)
             {
-                linearInterpolation(randomiserSmoothing, weapon_firerate.SMG * (1 + 0), (((weapon_recoil.customX[check] * recoil) * (1 + randomiserR) * scope) * attachment), (((weapon_recoil.customY[check] * recoil) * (1 + randomiserR) * scope) *attachment));
+                LinearlySmoothing(100, (weapon_firerate.SMGControleTime[check]), (weapon_recoil.customX[check] * scope * attachment * (1 + randomiserR)), (weapon_recoil.customY[check] * scope * attachment * (1 + randomiserR)));
+                //linearInterpolation(randomiserSmoothing, weapon_firerate.SMG * (1 + 0), (((weapon_recoil.customX[check] * recoil) * (1 + randomiserR) * scope) * attachment), (((weapon_recoil.customY[check] * recoil) * (1 + randomiserR) * scope) *attachment));
             }
             if (currentwep == 5)
             {
                
-                linearInterpolation(randomiserSmoothing, weapon_firerate.LR, ((weapon_recoil.lrX[check] * recoil) * (1 + randomiserR) * scope) * attachment, (((weapon_recoil.lrY[check] * recoil) * (1 + randomiserR) * scope) * attachment));
+                LinearlySmoothing(120, (weapon_firerate.LRControlTime[check]), (weapon_recoil.lrX[check] * scope * attachment * (1 + randomiserR)), (weapon_recoil.lrY[check] * scope * attachment * (1 + randomiserR)));
+                //linearInterpolation(randomiserSmoothing, weapon_firerate.LR, ((weapon_recoil.lrX[check] * recoil) * (1 + randomiserR) * scope) * attachment, (((weapon_recoil.lrY[check] * recoil) * (1 + randomiserR) * scope) * attachment));
             }                  
 
             if (currentwep == 6)
             {
-                linearInterpolation(randomiserSmoothing, weapon_firerate.m249, ((weapon_recoil.m249X[check] * recoil ) * (1) * scope) * attachment, (((weapon_recoil.m249Y[check] * recoil) * (1) * scope) * attachment));
+                LinearlySmoothing(120, (weapon_firerate.M249ControlTime[check]), (weapon_recoil.m249X[check] * scope * (1 + randomiserR) * attachment), ((weapon_recoil.m249Y[check] * 1.15) * scope * attachment * (1 + randomiserR)));
+                //linearInterpolation(randomiserSmoothing, weapon_firerate.m249, ((weapon_recoil.m249X[check] * recoil ) * (1) * scope) * attachment, (((weapon_recoil.m249Y[check] * recoil) * (1) * scope) * attachment));
             }
 
 
