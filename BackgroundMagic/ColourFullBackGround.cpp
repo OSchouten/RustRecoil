@@ -90,7 +90,7 @@ int main()
     Modifier modifier;
     SetPriorityClass(GetCurrentProcess(), 0x00000080);
 
-
+  
     std::random_device rd;
     std::default_random_engine generator(rd()); 
     std::uniform_real_distribution<float> distributionR(0.01, 0.09);
@@ -102,8 +102,10 @@ int main()
     float randomiserDelay;
     float randomiserSmoothing;
     float randomiserDelayDelay;
+    //Neil values: 1.9, 2.0 tom
+    float tommyRecoil = 1.1;
+    float recoil = 1.0;
    
-    float recoil = 1;
     float scope = 1;
     float attachment = 1;
     int currentwep = 0;
@@ -131,7 +133,7 @@ int main()
             {
                 std::cout << "Current Weapon: m249" << std::endl;
                 currentwep = 6;
-            }
+            }   
 
             if (GetAsyncKeyState(VK_NUMPAD0))
             {
@@ -184,34 +186,34 @@ int main()
 
             if(currentwep == 1)
             {            
-                LinearlySmoothing(133, weapon_firerate.AssaultRifleControlTime[check], (weapon_recoil.akX[check] * scope * attachment), (weapon_recoil.aky[check] * scope * attachment));
+                LinearlySmoothing(133, weapon_firerate.AssaultRifleControlTime[check], (weapon_recoil.akX[check] * scope * attachment * (recoil)), (weapon_recoil.aky[check] * scope * attachment * (recoil)));
                 //linearInterpolation(randomiserSmoothing, weapon_firerate.AK, ((weapon_recoil.akX[check]  * attachment)* scope), ((weapon_recoil.aky[check] * attachment) * scope));
            }
             if (currentwep == 2)
             {
               //  linearInterpolation(randomiserSmoothing, (weapon_firerate.MP5) * (1 + 0), ((weapon_recoil.mp5a4X[check] * 1 )), (((weapon_recoil.mp5a4Y[check] * 1) * (1 + 0) * scope)) * 1);
-                LinearlySmoothing(randomiserDelayDelay, (weapon_firerate.MP5A4ControlTime[check]), (weapon_recoil.mp5a4X[check] * scope * (1 + randomiserR) * attachment), (weapon_recoil.mp5a4Y[check] * scope * attachment * (1 + randomiserR)));
+                LinearlySmoothing(randomiserDelayDelay, (weapon_firerate.MP5A4ControlTime[check]), (weapon_recoil.mp5a4X[check] * scope * (recoil + randomiserR) * attachment), (weapon_recoil.mp5a4Y[check] * scope * attachment * (recoil + randomiserR)));
             }
             if (currentwep == 3)
             {
-                LinearlySmoothing(130, (weapon_firerate.ThompsonControlTime[check]), (weapon_recoil.thompsonX[check] * scope * (1 + randomiserR) * attachment), (weapon_recoil.thompsonY[check] * scope * attachment * (1 + randomiserR)));
+                LinearlySmoothing(130, (weapon_firerate.ThompsonControlTime[check]), (weapon_recoil.thompsonX[check] * scope * (tommyRecoil + randomiserR) * attachment), (weapon_recoil.thompsonY[check] * scope * attachment * (tommyRecoil + randomiserR)));
                 //linearInterpolation(randomiserSmoothing, weapon_firerate.Thompson * (1 + 0), (((weapon_recoil.thompsonX[check] * recoil) * (1 + randomiserR) *(scope * 1.2) * attachment)), (((weapon_recoil.thompsonY[check] * recoil) * (1 + randomiserR) * (scope * 1.2))) * attachment);
             }
             if (currentwep == 4)
             {
-                LinearlySmoothing(100, (weapon_firerate.SMGControleTime[check]), (weapon_recoil.customX[check] * scope * attachment * (1 + randomiserR)), (weapon_recoil.customY[check] * scope * attachment * (1 + randomiserR)));
+                LinearlySmoothing(100, (weapon_firerate.SMGControleTime[check]), (weapon_recoil.customX[check] * scope * attachment * (recoil + randomiserR)), (weapon_recoil.customY[check] * scope * attachment * (recoil + randomiserR)));
                 //linearInterpolation(randomiserSmoothing, weapon_firerate.SMG * (1 + 0), (((weapon_recoil.customX[check] * recoil) * (1 + randomiserR) * scope) * attachment), (((weapon_recoil.customY[check] * recoil) * (1 + randomiserR) * scope) *attachment));
             }
             if (currentwep == 5)
             {
                
-                LinearlySmoothing(120, (weapon_firerate.LRControlTime[check]), (weapon_recoil.lrX[check] * scope * attachment * (1 + randomiserR)), (weapon_recoil.lrY[check] * scope * attachment * (1 + randomiserR)));
+                LinearlySmoothing(120, (weapon_firerate.LRControlTime[check]), (weapon_recoil.lrX[check] * scope * attachment * (recoil + randomiserR)), (weapon_recoil.lrY[check] * scope * attachment * (recoil + randomiserR)));
                 //linearInterpolation(randomiserSmoothing, weapon_firerate.LR, ((weapon_recoil.lrX[check] * recoil) * (1 + randomiserR) * scope) * attachment, (((weapon_recoil.lrY[check] * recoil) * (1 + randomiserR) * scope) * attachment));
             }                  
 
             if (currentwep == 6)
             {
-                LinearlySmoothing(120, (weapon_firerate.M249ControlTime[check]), (weapon_recoil.m249X[check] * scope * (1 + randomiserR) * attachment), ((weapon_recoil.m249Y[check] * 1.15) * scope * attachment * (1 + randomiserR)));
+                LinearlySmoothing(120, (weapon_firerate.M249ControlTime[check]), (weapon_recoil.m249X[check] * scope * (recoil + randomiserR) * attachment), ((weapon_recoil.m249Y[check] * 1.15) * scope * attachment * (recoil + randomiserR)));
                 //linearInterpolation(randomiserSmoothing, weapon_firerate.m249, ((weapon_recoil.m249X[check] * recoil ) * (1) * scope) * attachment, (((weapon_recoil.m249Y[check] * recoil) * (1) * scope) * attachment));
             }
 
@@ -225,18 +227,6 @@ int main()
             }
             check = 0;
         }    
-}
-
-
-void linearInterpolation(int smoothing, int delay, int x, int y)
-{
-
-    for (int i = 0; i < smoothing; i++) {
-        mouse_event(1, x / smoothing, y / smoothing, 0, 0);
-        SleepTime(delay / smoothing);
-    }
-    mouse_event(1, x % smoothing, y % smoothing, 0, 0);
-    Sleep(delay % smoothing);
 }
 
 void LinearlySmoothing(double totalTime, double control_time, int X, int Y)
